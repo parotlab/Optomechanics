@@ -32,4 +32,7 @@
 *.app
 
 # Tests
-motor_test/
+motor_test/compatibility.ino
+motor_test/joystick_integration.ino
+motor_test/screen_recognizer.ino
+motor_test/screen_test.ino
