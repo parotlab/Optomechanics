@@ -7,26 +7,32 @@ windows_name, base_class = uic.loadUiType("menu.ui")
 
 class MainWindow(windows_name, base_class):
 
-    signal_button = pyqtSignal(str,str)
+    signal_clock = pyqtSignal(str,str)
+    signal_cclock = pyqtSignal(str,str)
 
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.button.clicked.connect(self.push_button)
+        self.bclock.clicked.connect(self.clockwise)
+        self.bcclock.clicked.connect(self.cclockwise)
         self.show()
     
-
-    def push_button(self):
-        angle = self.angle_label.text()
+    def clockwise(self):
+        steps = self.angle_label.text()
         speed = self.speed_label.text()
-        self.signal_button.emit(angle, speed)
+        self.signal_clock.emit(steps, speed)
+
+    def cclockwise(self):
+        steps = self.angle_label.text()
+        speed = self.speed_label.text()
+        self.signal_cclock.emit(steps, speed)
 
     def text(self,bool):
         if bool == True:
             print("se ha movido")
             self.texto.setText("Se ha movido")
         else:
-            print("no se numero valido")
+            print("no es numero valido")
             self.texto.setText("Numero invalido")
 
 
